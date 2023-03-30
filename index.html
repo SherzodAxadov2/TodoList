@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <div class="bg-bitmap"></div>
+    <div class="todo">
+      <div class="todo-top">
+        <h1 class="title">todo</h1>
+        <div id="theme-toggle">
+          <img
+            src="images/moon.png"
+            alt="moon"
+            class="d-block-light d-none theme"
+          />
+          <img
+            src="images/sun.png"
+            alt="moon"
+            class="d-block-dark d-none theme"
+          />
+        </div>
+      </div>
+
+      <div class="add-input">
+        <span></span
+        ><input type="text" placeholder="Currently typing" class="input" />
+      </div>
+
+      <div class="lists">
+        <ul class="todo-lists scroll-effect">
+          <!-- <li class="list-item">
+            <div class="check">
+              <div class="checkbox"></div>
+              <label for="check"> I have a bike</label><br />
+            </div>
+            <div class="close">
+              <span></span>
+              <span></span>
+            </div>
+          </li> -->
+        </ul>
+
+        <div class="list-bottom-count d-none">
+          <div class="list-count"></div>
+          <p class="clear" onclick="clearAll()">Clear Completed</p>
+        </div>
+
+        <div class="list-bottom-count">
+          <div class="list-count"></div>
+          <ul class="filters md-none"></ul>
+          <p class="clear" onclick="clearAll()">Clear Completed</p>
+        </div>
+      </div>
+      <div class="list-bottom-count d-none md-block">
+        <ul class="filters filters2"></ul>
+      </div>
+      <p class="bottom">Drag and drop to reorder list</p>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
