@@ -37,7 +37,7 @@ saveStorage(todoList);
 
 // Clear
 const clearAll = () => {
-  todoList = [];
+  todoList = todoList.filter((list) => !list.isCompleted);
   setTodos();
   saveStorage(todoList);
 };
@@ -69,9 +69,10 @@ const selectFilter = (id) => {
     newArr = todoList.filter((todo) => todo.isCompleted);
   } else newArr = todoList;
 
-  setNewTodos(newArr);
   saveStorage(newArr);
-  setFilters();
+  setNewTodos(newArr);
+  setFilters(filter);
+  setFilters(filter2);
 };
 
 input.addEventListener("keydown", (e) => {
@@ -79,7 +80,6 @@ input.addEventListener("keydown", (e) => {
     obj.text = e.target.value;
     obj.id = Date.now();
     obj.isCompleted = false;
-    obj.isTicked = false;
     todoList.push(obj);
 
     e.target.value = "";
@@ -97,16 +97,6 @@ const showCount = () => {
   });
 };
 
-const setTick = (id) => {
-  todoList.map((list) => {
-    if (list.id === id) {
-      list.isTicked = !list.isTicked;
-    }
-  });
-
-  setTodos();
-};
-
 let setTodos = () => {
   showCount();
   todoLists.innerHTML = ``;
@@ -116,9 +106,9 @@ let setTodos = () => {
           list.isCompleted ? "done" : ""
         }" onclick="doneTodo(${list.id})">
           <div class="check">
-              <div class="checkbox" onclick="setTick(${list.id})">
+              <div class="checkbox">
                 <img src="images/tick.png" alt="img" class="tick ${
-                  list.isTicked ? "d-block" : "d-none"
+                  list.isCompleted ? "d-block" : "d-none"
                 }">
               </div>
               <label for="check">${list.text}</label><br>
@@ -151,7 +141,11 @@ let setNewTodos = (arr) => {
           list.isCompleted ? "done" : ""
         }" onclick="doneTodo(${list.id})">
           <div class="check">
-              <div class="checkbox"></div>
+              <div class="checkbox">
+                <img src="images/tick.png" alt="img" class="tick ${
+                  list.isCompleted ? "d-block" : "d-none"
+                }">
+              </div>
               <label for="check">${list.text}</label><br>
           </div>
           <div class="close">
